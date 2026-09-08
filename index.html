@@ -178,20 +178,6 @@ html.light .theme-toggle-inline{box-shadow:0 2px 8px rgba(0,0,0,.1)}
         <div class="hp">49 Athletes</div>
       </div>
       <div class="hero-stats" id="hero-stats"></div>
-    </div>
-    <div class="next-panel">
-      <div class="next-lbl">Next Regatta</div>
-      <div class="next-name">April 11-12, 2026</div>
-      <div class="ncd" id="ncd">
-        <div class="ncu"><div class="ncn" id="ncd-d">--</div><div class="ncl">days</div></div>
-        <div class="ncs">:</div>
-        <div class="ncu"><div class="ncn" id="ncd-h">--</div><div class="ncl">hrs</div></div>
-        <div class="ncs">:</div>
-        <div class="ncu"><div class="ncn" id="ncd-m">--</div><div class="ncl">min</div></div>
-        <div class="ncs">:</div>
-        <div class="ncu"><div class="ncn" id="ncd-s">--</div><div class="ncl">sec</div></div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -233,26 +219,6 @@ function toggleTheme(){
     }
   }catch(e){}
 })();
-
-// ── COUNTDOWN & CLOCK ─────────────────────────────────────────
-const NEXT = new Date(Date.UTC(2026, 3, 11, 17, 0, 0)); // Mar 7 9am PST
-function pad(n){return String(n).padStart(2,'0')}
-
-function tickCountdown(){
-  const diff=NEXT-new Date();
-  if(diff<=0){
-    document.getElementById('ncd').innerHTML='<div style="font-family:\'DM Mono\',monospace;font-size:13px;color:var(--gold);letter-spacing:2px">TODAY!</div>';
-    return;
-  }
-  const dy=Math.floor(diff/86400000),hr=Math.floor(diff%86400000/3600000),
-        mi=Math.floor(diff%3600000/60000),sc=Math.floor(diff%60000/1000);
-  document.getElementById('ncd-d').textContent=pad(dy);
-  document.getElementById('ncd-h').textContent=pad(hr);
-  document.getElementById('ncd-m').textContent=pad(mi);
-  document.getElementById('ncd-s').textContent=pad(sc);
-}
-
-setInterval(tickCountdown,1000); tickCountdown();
 
 // ── HELPERS ───────────────────────────────────────────────────
 function parseT(t){
